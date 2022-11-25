@@ -100,17 +100,17 @@ public class HomePageSamokat {
     public boolean testAllMenuItemsValues(String lineOfTextQuestion, String lineOfTextAnswer){
         if (clickAccordeonItemHowMuch(lineOfTextQuestion, lineOfTextAnswer)){
             return true;
-        } else if (clickAccordeonItemItemNumberOfScooters(lineOfTextQuestion, lineOfTextAnswer)){
+        }if (clickAccordeonItemItemNumberOfScooters(lineOfTextQuestion, lineOfTextAnswer)){
             return true;
-        } else if (clickAccordeonItemRentalTimeCalculation(lineOfTextQuestion, lineOfTextAnswer)){
+        }if (clickAccordeonItemRentalTimeCalculation(lineOfTextQuestion, lineOfTextAnswer)){
             return true;
-        } else if (clickAccordeonItemRightToday(lineOfTextQuestion, lineOfTextAnswer)){
+        }if (clickAccordeonItemRightToday(lineOfTextQuestion, lineOfTextAnswer)){
             return true;
-        } else if (clickAccordeonItemExtensionReductionOrder(lineOfTextQuestion, lineOfTextAnswer)){
+        }if (clickAccordeonItemExtensionReductionOrder(lineOfTextQuestion, lineOfTextAnswer)){
             return true;
-        } else if (clickAccordeonItemCancelTheOrder(lineOfTextQuestion, lineOfTextAnswer)){
+        }if (clickAccordeonItemCancelTheOrder(lineOfTextQuestion, lineOfTextAnswer)){
             return true;
-        } else if (clickAccordeonItemScooterCharging(lineOfTextQuestion, lineOfTextAnswer)){
+        }if (clickAccordeonItemScooterCharging(lineOfTextQuestion, lineOfTextAnswer)){
             return true;
         } else return clickAccordeonItemMKAD(lineOfTextQuestion, lineOfTextAnswer);
     }
