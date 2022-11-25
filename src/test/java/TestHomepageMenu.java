@@ -1,3 +1,4 @@
+import org.hamcrest.MatcherAssert;
 import sitepages.HomePageSamokat;
 import org.junit.After;
 import org.junit.Test;
@@ -6,6 +7,8 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertTrue;
 
 
@@ -13,24 +16,26 @@ import static org.junit.Assert.assertTrue;
 public class TestHomepageMenu {
     WebDriver driver;
     private static final String PAGE_URL = "https://qa-scooter.praktikum-services.ru";
-    private final String textLine;
+    private final String textQuestion;
+    private final String textAnswer;
     private final String browserDriver;
 
-    public TestHomepageMenu(String textLine, String browserDriver) {
-        this.textLine = textLine;
+    public TestHomepageMenu(String textQuestion, String textAnswer, String browserDriver) {
+        this.textQuestion = textQuestion;
+        this.textAnswer = textAnswer;
         this.browserDriver = browserDriver;
     }
     @Parameterized.Parameters
     public static Object[][] getTextLine(){
         return new Object[][]{
-                {"Сутки — 400 рублей. Оплата курьеру — наличными или картой.", "Chrome"},
-                {"Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.", "Chrome"},
-                {"Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", "Chrome"},
-                {"Только начиная с завтрашнего дня. Но скоро станем расторопнее.", "Chrome"},
-                {"Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", "Chrome"},
-                {"Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.", "Chrome"},
-                {"Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.", "Chrome"},
-                {"Да, обязательно. Всем самокатов! И Москве, и Московской области.", "Chrome"},
+                {"Сколько это стоит? И как оплатить?", "Сутки — 400 рублей. Оплата курьеру — наличными или картой.", "Chrome"},
+                {"Хочу сразу несколько самокатов! Так можно?", "Пока что у нас так: один заказ — один самокат. Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим.", "Chrome"},
+                {"Как рассчитывается время аренды?", "Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30.", "Chrome"},
+                {"Можно ли заказать самокат прямо на сегодня?", "Только начиная с завтрашнего дня. Но скоро станем расторопнее.", "Chrome"},
+                {"Можно ли продлить заказ или вернуть самокат раньше?", "Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010.", "Chrome"},
+                {"Вы привозите зарядку вместе с самокатом?", "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.", "Chrome"},
+                {"Можно ли отменить заказ?", "Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои.", "Chrome"},
+                {"Я жизу за МКАДом, привезёте?", "Да, обязательно. Всем самокатов! И Москве, и Московской области.", "Chrome"},
         };
     }
     @Test
@@ -51,7 +56,9 @@ public class TestHomepageMenu {
         objHomePage.clickCookieButton(); //Кликаем по кнопки принятия cookie
         objHomePage.scrollForMenuHomePageSamokat(); //Скроллим до меню аккордеона
 
-        assertTrue(objHomePage.testAllMenuItemsValues(textLine));
+        boolean result = objHomePage.testAllMenuItemsValues(textQuestion, textAnswer);
+        assertTrue(result);
+
     }
     @After
     public void tearsDown(){

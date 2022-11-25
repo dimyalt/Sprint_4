@@ -97,81 +97,133 @@ public class HomePageSamokat {
             choseOrderButtonBody();
         }
     }
-    //Метод сбора значений пунктов меню
-    public boolean testAllMenuItemsValues(String lineOfText){
-
-        List menuElementsValues = new ArrayList();
-        menuElementsValues.add(clickAccordeonItemHowMuch());
-
-        menuElementsValues.add(clickAccordeonItemItemNumberOfScooters());
-
-        menuElementsValues.add(clickAccordeonItemRentalTimeCalculation());
-
-        menuElementsValues.add(clickAccordeonItemRightToday());
-
-        menuElementsValues.add(clickAccordeonItemExtensionReductionOrder());
-
-        menuElementsValues.add(clickAccordeonItemCancelTheOrder());
-
-        menuElementsValues.add(clickAccordeonItemScooterCharging());
-
-        menuElementsValues.add(clickAccordeonItemMKAD());
-
-        boolean actualResult = menuElementsValues.toString().contains(lineOfText);
-        return actualResult;
-
+    //Метод сбора проверки пункта меню на текст заголовка и текс значения
+    public boolean testAllMenuItemsValues(String lineOfTextQuestion, String lineOfTextAnswer){
+        if (clickAccordeonItemHowMuch(lineOfTextQuestion, lineOfTextAnswer)){
+            return true;
+        } else if (clickAccordeonItemItemNumberOfScooters(lineOfTextQuestion, lineOfTextAnswer)){
+            return true;
+        } else if (clickAccordeonItemRentalTimeCalculation(lineOfTextQuestion, lineOfTextAnswer)){
+            return true;
+        } else if (clickAccordeonItemRightToday(lineOfTextQuestion, lineOfTextAnswer)){
+            return true;
+        } else if (clickAccordeonItemExtensionReductionOrder(lineOfTextQuestion, lineOfTextAnswer)){
+            return true;
+        } else if (clickAccordeonItemCancelTheOrder(lineOfTextQuestion, lineOfTextAnswer)){
+            return true;
+        } else if (clickAccordeonItemScooterCharging(lineOfTextQuestion, lineOfTextAnswer)){
+            return true;
+        } else return clickAccordeonItemMKAD(lineOfTextQuestion, lineOfTextAnswer);
     }
 
-    //Метод нажатия на кнопки меню аккордеона
-    public String clickAccordeonItemHowMuch(){
-        driver.findElement(accordeonItemHowMuch).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemHowMuchP));
-        return driver.findElement(accordeonItemHowMuchP).getText();
+    //Метод нажатия на кнопки меню аккордеона и проверки ответа
+    public boolean clickAccordeonItemHowMuch(String lineOfTextQuestion, String lineOfTextAnswer) {
+        boolean result = false;
+        if ((driver.findElement(accordeonItemHowMuch).getText()).contains(lineOfTextQuestion)) { // Если заголовок содержит текст вопроса
+            driver.findElement(accordeonItemHowMuch).click(); // Кликаем на заголовок
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1)); // Даем время открыться пункту меню
+            wait.until(ExpectedConditions.elementToBeClickable(accordeonItemHowMuchP));
+            if ((driver.findElement(accordeonItemHowMuchP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                result = true;
+            }
+        } else {
+        }
+        return result;
+    }
+    public boolean clickAccordeonItemItemNumberOfScooters(String lineOfTextQuestion, String lineOfTextAnswer){
+        boolean result = false;
+        if ((driver.findElement(accordeonItemNumberOfScooters).getText()).contains(lineOfTextQuestion)){ // Если заголовок содержит текст вопроса
+            driver.findElement(accordeonItemNumberOfScooters).click();  // Кликаем на заголовок
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));  // Даем время открыться пункту меню
+            wait.until(ExpectedConditions.elementToBeClickable(accordeonItemNumberOfScootersP));
+            if ((driver.findElement(accordeonItemNumberOfScootersP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                result = true;
+            }
+        } else {
+        }
+        return result;
+    }
+    public boolean clickAccordeonItemRentalTimeCalculation(String lineOfTextQuestion, String lineOfTextAnswer){
+        boolean result = false;
+        if ((driver.findElement(accordeonItemRentalTimeCalculation).getText()).contains(lineOfTextQuestion)){ // Если заголовок содержит текст вопроса
+            driver.findElement(accordeonItemRentalTimeCalculation).click();  // Кликаем на заголовок
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));  // Даем время открыться пункту меню
+            wait.until(ExpectedConditions.elementToBeClickable(accordeonItemRentalTimeCalculationP));
+            if ((driver.findElement(accordeonItemRentalTimeCalculationP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                result = true;
+            }
+        } else {
+        }
+        return result;
+    }
+
+    public boolean clickAccordeonItemRightToday(String lineOfTextQuestion, String lineOfTextAnswer) {
+        boolean result = false;
+        if ((driver.findElement(accordeonItemRightToday).getText()).contains(lineOfTextQuestion)) { // Если заголовок содержит текст вопроса
+            driver.findElement(accordeonItemRightToday).click();  // Кликаем на заголовок
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));  // Даем время открыться пункту меню
+            wait.until(ExpectedConditions.elementToBeClickable(accordeonItemRightTodayP));
+            if ((driver.findElement(accordeonItemRightTodayP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                result = true;
+            }
+        } else {
+        }
+        return result;
+    }
+    public boolean clickAccordeonItemExtensionReductionOrder(String lineOfTextQuestion, String lineOfTextAnswer) {
+        boolean result = false;
+        if ((driver.findElement(accordeonItemExtensionReductionOrder).getText()).contains(lineOfTextQuestion)) { // Если заголовок содержит текст вопроса
+            driver.findElement(accordeonItemExtensionReductionOrder).click();  // Кликаем на заголовок
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));  // Даем время открыться пункту меню
+            wait.until(ExpectedConditions.elementToBeClickable(accordeonItemExtensionReductionOrderP));
+            if ((driver.findElement(accordeonItemExtensionReductionOrderP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                result = true;
+            }
+        } else {
+        }
+        return result;
+    }
+    public boolean clickAccordeonItemCancelTheOrder(String lineOfTextQuestion, String lineOfTextAnswer) {
+        boolean result = false;
+        if ((driver.findElement(accordeonItemCancelTheOrder).getText()).contains(lineOfTextQuestion)) { // Если заголовок содержит текст вопроса
+            driver.findElement(accordeonItemCancelTheOrder).click();  // Кликаем на заголовок
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));  // Даем время открыться пункту меню
+            wait.until(ExpectedConditions.elementToBeClickable(accordeonItemCancelTheOrderP));
+            if ((driver.findElement(accordeonItemCancelTheOrderP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                result = true;
+            }
+        } else {
+        }
+        return result;
 
     }
-    public String clickAccordeonItemItemNumberOfScooters(){
-        driver.findElement(accordeonItemNumberOfScooters).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemNumberOfScootersP));
-        return driver.findElement(accordeonItemNumberOfScootersP).getText();
+    public boolean clickAccordeonItemScooterCharging(String lineOfTextQuestion, String lineOfTextAnswer) {
+        boolean result = false;
+        if ((driver.findElement(accordeonItemScooterCharging).getText()).contains(lineOfTextQuestion)) { // Если заголовок содержит текст вопроса
+            driver.findElement(accordeonItemScooterCharging).click();  // Кликаем на заголовок
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));  // Даем время открыться пункту меню
+            wait.until(ExpectedConditions.elementToBeClickable(accordeonItemScooterChargingP));
+            if ((driver.findElement(accordeonItemScooterChargingP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                result = true;
+            }
+        } else {
+        }
+        return result;
     }
-    public String clickAccordeonItemRentalTimeCalculation(){
-        driver.findElement(accordeonItemRentalTimeCalculation).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemRentalTimeCalculationP));
-        return driver.findElement(accordeonItemRentalTimeCalculationP).getText();
+    public boolean clickAccordeonItemMKAD(String lineOfTextQuestion, String lineOfTextAnswer) {
+        boolean result = false;
+        if ((driver.findElement(accordeonItemMKAD).getText()).contains(lineOfTextQuestion)) { // Если заголовок содержит текст вопроса
+             driver.findElement(accordeonItemMKAD).click();  // Кликаем на заголовок
+             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));  // Даем время открыться пункту меню
+             wait.until(ExpectedConditions.elementToBeClickable(accordeonItemMKADP));
+             if ((driver.findElement(accordeonItemMKADP).getText()).contains(lineOfTextAnswer)) { //Проверяем содержимое пункта меню
+                 result = true;
+             }
+        } else {
+        }
+        return result;
     }
-    public String clickAccordeonItemRightToday(){
-        driver.findElement(accordeonItemRightToday).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemRightTodayP));
-        return driver.findElement(accordeonItemRightTodayP).getText();
-    }
-    public String clickAccordeonItemExtensionReductionOrder(){
-        driver.findElement(accordeonItemExtensionReductionOrder).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemExtensionReductionOrderP));
-        return driver.findElement(accordeonItemExtensionReductionOrderP).getText();
-    }
-    public String clickAccordeonItemCancelTheOrder(){
-        driver.findElement(accordeonItemCancelTheOrder).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemCancelTheOrderP));
-        return driver.findElement(accordeonItemCancelTheOrderP).getText();
-    }
-    public String clickAccordeonItemScooterCharging(){
-        driver.findElement(accordeonItemScooterCharging).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemScooterChargingP));
-        return driver.findElement(accordeonItemScooterChargingP).getText();
-    }
-    public String clickAccordeonItemMKAD(){
-        driver.findElement(accordeonItemMKAD).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
-        wait.until(ExpectedConditions.elementToBeClickable(accordeonItemMKADP));
-        return driver.findElement(accordeonItemMKADP).getText();
-    }
+
     //Метод нажатия кнопки принять cookie
     public void clickCookieButton(){
         driver.findElement(cookieButton).click();
