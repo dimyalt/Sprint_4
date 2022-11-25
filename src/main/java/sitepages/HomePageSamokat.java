@@ -185,4 +185,3 @@ public class HomePageSamokat {
 
 
 }
-//Финальное измененние для pull request

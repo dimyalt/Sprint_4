@@ -119,7 +119,6 @@ public class OrderPagesSamokat {
         setColorCheckbox(setColor);
         setOrderCommentField(setOrderComment);
         driver.findElement(orderButton).click();
-        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
         new WebDriverWait(driver, Duration.ofSeconds(1));
         driver.findElement(orderButtonOk).click();
         return getOrderStatus();
@@ -129,4 +128,3 @@ public class OrderPagesSamokat {
         return driver.findElement(orderOk).getText();
     }
 }
-//Финальное измененние для pull request

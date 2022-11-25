@@ -14,6 +14,7 @@ import static org.hamcrest.CoreMatchers.containsString;
 @RunWith(Parameterized.class)
 public class TestOrder {
     WebDriver driver;
+    private static final String PAGE_URL = "https://qa-scooter.praktikum-services.ru";
     private final String orderName;
     private final String orderLastname;
     private final String orderAdres;
@@ -66,7 +67,7 @@ public class TestOrder {
             driver = new FirefoxDriver(); //Драйвер для FireFox
         }
 
-        driver.get("https://qa-scooter.praktikum-services.ru"); //Переходим на главную страницу приложения
+        driver.get(PAGE_URL); //Переходим на главную страницу приложения
         HomePageSamokat objHomePage = new HomePageSamokat(driver); //Создаем объект гласса главной страницы
         objHomePage.clickCookieButton(); //Кликаем на кнопку "Cookies"
         objHomePage.choseOrderButton(buttonPlace);
