@@ -1,5 +1,5 @@
-import SitePages.HomePageSamokat;
-import SitePages.OrderPagesSamokat;
+import sitepages.HomePageSamokat;
+import sitepages.OrderPagesSamokat;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.runner.RunWith;
@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import static org.hamcrest.CoreMatchers.containsString;
 
 @RunWith(Parameterized.class)
-public class AllStepsOfOrderOrderPlaced {
+public class TestOrder {
     WebDriver driver;
     private final String orderName;
     private final String orderLastname;
@@ -27,10 +27,10 @@ public class AllStepsOfOrderOrderPlaced {
     private final String browserDriver;  //Переменная для выбора браузера для тестирования (или Chrome или Firefox)
     private final String buttonPlace; //Переменная для выбора кнопки "Заказать" (или header или body)
 
-    public AllStepsOfOrderOrderPlaced(String orderName, String orderLastname, String orderAdres,
-                                      String orderSubstantion, String orderPhone, String orderStartDate,
-                                      String orderDuration, String scooterColor, String orderComment,
-                                      String expectedResult, String browserDriver, String buttonPlace){
+    public TestOrder(String orderName, String orderLastname, String orderAdres,
+                     String orderSubstantion, String orderPhone, String orderStartDate,
+                     String orderDuration, String scooterColor, String orderComment,
+                     String expectedResult, String browserDriver, String buttonPlace){
         this.orderName = orderName;
         this.orderLastname = orderLastname;
         this.orderAdres = orderAdres;
@@ -56,7 +56,7 @@ public class AllStepsOfOrderOrderPlaced {
         };
     }
     @Test
-    public void testOrder() {
+    public void testOrderFlow() {
 
         System.setProperty("webdriver.gecko.driver","C:\\WebDriver\\bin\\geckodriver.exe");
 
@@ -79,7 +79,7 @@ public class AllStepsOfOrderOrderPlaced {
 
     }
     @After
-    public void teasDown(){
+    public void tearsDown(){
         driver.quit();
     }
 }

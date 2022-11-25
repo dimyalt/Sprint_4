@@ -1,4 +1,4 @@
-package SitePages;
+package sitepages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -119,7 +119,8 @@ public class OrderPagesSamokat {
         setColorCheckbox(setColor);
         setOrderCommentField(setOrderComment);
         driver.findElement(orderButton).click();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(1));
+        new WebDriverWait(driver, Duration.ofSeconds(1));
         driver.findElement(orderButtonOk).click();
         return getOrderStatus();
     }

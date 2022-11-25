@@ -1,4 +1,4 @@
-import SitePages.HomePageSamokat;
+import sitepages.HomePageSamokat;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Test;
@@ -10,13 +10,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 @RunWith(Parameterized.class)
-public class TextOfListItemsMatching {
+public class TestHomepageMenu {
     WebDriver driver;
     private final String textLine;
     private final boolean isThisLine;
     private final String browserDriver;
 
-    public TextOfListItemsMatching(String textLine, boolean isThisLine, String browserDriver) {
+    public TestHomepageMenu(String textLine, boolean isThisLine, String browserDriver) {
         this.textLine = textLine;
         this.isThisLine = isThisLine;
         this.browserDriver = browserDriver;
@@ -35,7 +35,7 @@ public class TextOfListItemsMatching {
         };
     }
     @Test
-    public void test(){
+    public void testMenuItems(){
 
         System.setProperty("webdriver.gecko.driver","C:\\WebDriver\\bin\\geckodriver.exe");
         if(browserDriver.equals("Chrome")){
@@ -55,7 +55,7 @@ public class TextOfListItemsMatching {
 
     }
     @After
-    public void teasDown(){
+    public void tearsDown(){
         driver.quit();
     }
 }

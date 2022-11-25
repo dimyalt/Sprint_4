@@ -1,4 +1,4 @@
-package SitePages;
+package sitepages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -91,7 +91,7 @@ public class HomePageSamokat {
     }
     //Метод выбора на какую кнопку "Заказать" кликать (в хедере или в теле)
     public void choseOrderButton(String buttonPlace){
-        if (buttonPlace == "header"){
+        if (buttonPlace.equals("header")){
             choseOrderButtonHeader();
         } else {
             choseOrderButtonBody();
