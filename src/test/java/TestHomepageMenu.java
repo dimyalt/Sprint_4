@@ -1,4 +1,3 @@
-import org.hamcrest.MatcherAssert;
 import sitepages.HomePageSamokat;
 import org.junit.After;
 import org.junit.Test;
@@ -7,8 +6,6 @@ import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertTrue;
 
 
